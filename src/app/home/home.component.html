@@ -1,0 +1,274 @@
+<ng-container *ngIf="isLoading; else errorOrLoaded">
+  <p class="loading">Loading data ...</p>
+</ng-container>
+
+<ng-template #errorOrLoaded>
+  <ng-container *ngIf="errorMessage; else loaded">
+    <p class="loading">{{ errorMessage }}</p>
+  </ng-container>
+  <ng-template #loaded>
+    <div class="header">
+      <app-app-header></app-app-header>
+    </div>
+
+    <main class="page_main">
+      <span class="left_shape"></span>
+      <span class="bottom_shape"></span>
+      <div class="container">
+        <div class="row g-5 justify-content-between">
+          <div class="col-md-4 col-lg-3">
+            <div class="sub_heading">Let’s Take your</div>
+            <h1 class="hd_1">business Online</h1>
+            <p class="info_2">Don’t need to wait for quotation</p>
+            <div class="info_1">
+              use this tool to get <span>instant cost estimates for free</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <form
+              class="needs-validation"
+              #form="ngForm"
+              (ngSubmit)="submitForm()"
+            >
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    placeholder="First name"
+                    required
+                    name="name"
+                    [(ngModel)]="info.name"
+                    #fname="ngModel"
+                  />
+                  <small
+                    class="error"
+                    *ngIf="showErrors && fname.errors?.['required']"
+                  >
+                    Valid first name is required.
+                  </small>
+                  <!-- <div class="invalid-feedback">Valid first name is required.</div> -->
+                </div>
+
+                <div class="col-sm-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    placeholder="Last name"
+                    value=""
+                    required
+                    name="lname"
+                    [(ngModel)]="info.lname"
+                    #lname="ngModel"
+                  />
+                  <small
+                    class="error"
+                    *ngIf="showErrors && lname.errors?.['required']"
+                  >
+                    Valid last name is required.
+                  </small>
+                  <!-- <div class="invalid-feedback">Valid last name is required.</div> -->
+                </div>
+                <div class="col-12">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Name of Your Business"
+                    name="business_name"
+                    [(ngModel)]="info.business_name"
+                    required
+                    #business_name="ngModel"
+                    id="exampleFormControlInput1"
+                    placeholder="Your business name"
+                  />
+
+                  <small
+                    class="error"
+                    *ngIf="showErrors && business_name.errors?.['required']"
+                  >
+                    Valid Business name is required..
+                  </small>
+                  <!-- <div class="invalid-feedback">
+                Valid Business name is required.
+              </div> -->
+                </div>
+                <div class="col-12">
+                  <!-- <select
+                    #industryList
+                    (change)="setIndustry(industryList.value)"
+                    class="form-select"
+                    name="Industry"
+                    aria-label="Default select example"
+                  >
+                    <option selected disabled>Select Industry</option>
+
+                    <option value="industry_1">Industry_1</option>
+                    <option value="industry_2">Industry_2</option>
+                    <option value="industry_3">Industry_3</option>
+                  </select> -->
+
+                  <ng-select
+                    (change)="setIndustry()"
+
+                    name="industry"
+                    required
+                    #indus="ngModel"
+                    [(ngModel)]="info.industry"
+                    [items]="industry"
+                    bindLabel="name"
+                    bindValue="name"
+                   
+                  ></ng-select>
+                  <small
+                    class="error"
+                    *ngIf="showIndustryError"
+                  >
+                    Industry name is required..
+                  </small>
+                  <!-- <select class="form-select" required="">
+                <option value="">Select Your Industry</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid Industry.
+              </div> -->
+                </div>
+                <div class="col-sm-6">
+                  <input
+                    type="email"
+                    class="form-control"
+                    required
+                    name="email"
+                    [(ngModel)]="info.email"
+                    #mail="ngModel"
+                    id="exampleFormControlInput1"
+                    pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                    placeholder="Email"
+                  />
+
+                  <small
+                    class="error"
+                    *ngIf="showErrors && mail.errors?.['pattern']"
+                  >
+                    Looks like this is not an email
+                  </small>
+                  <small
+                    class="error"
+                    *ngIf="showErrors && mail.errors?.['required']"
+                  >
+                    email cannot be empty
+                  </small>
+                  <!-- <div class="invalid-feedback">
+                Please enter a valid email address.
+              </div> -->
+                </div>
+
+                <div class="col-sm-6">
+                  <ngx-intl-tel-input
+                    required
+                    name="phone"
+                    [(ngModel)]="contact"
+                    [cssClass]="'custom'"
+                    [preferredCountries]="preferredCountries"
+                    [enableAutoCountrySelect]="true"
+                    [enablePlaceholder]="true"
+                    [searchCountryFlag]="true"
+                    [searchCountryField]="[
+                      SearchCountryField.Iso2,
+                      SearchCountryField.Name
+                    ]"
+                    [selectFirstCountry]="false"
+                    [selectedCountryISO]="CountryISO.India"
+                    [maxLength]="15"
+                    [phoneValidation]="true"
+                    [separateDialCode]="separateDialCode"
+                    [numberFormat]="PhoneNumberFormat.National"
+                    #phone="ngModel"
+                  ></ngx-intl-tel-input>
+
+                  <!-- <input
+                    type="number"
+                    
+                    required
+                    name="phone"
+                    [(ngModel)]="info.number"
+                    #pword="ngModel"
+                    id="exampleFormControlInput1"
+                    placeholder="Phone"
+                  /> -->
+
+                  <small
+                    class="error"
+                    *ngIf="showErrors && phone.errors?.['required']"
+                  >
+                    phone cannot be empty.
+                  </small>
+
+                  <small
+                    class="error"
+                    *ngIf="showErrors && form.controls['phone'].invalid"
+                  >
+                    invalid phone number
+                  </small>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-check-label d-block mb-2"
+                    >select your service<span class="asterisk">*</span></label
+                  >
+                  <div class="btn_group" role="group">
+                    <span *ngFor="let s of services; let i = index">
+                      <input
+                        type="radio"
+                        class="btn-check"
+                        [name]="'radio' + i"
+                        [id]="s.service"
+                        autocomplete="off"
+                        [value]="s.id"
+                        [(ngModel)]="info.service"
+                      />
+                      <label
+                        class="btn service btn-primary btn-lg btn_263_63 mb-3 mb-md-0"
+                        [for]="s.service"
+                        >{{ s.service }}
+                        <img src="assets/images/icon-tick.svg" />
+                      </label>
+                    </span>
+                    <small class="error" *ngIf="showServiceError">
+                      service cannot be empty.
+                    </small>
+
+                    <!-- <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio2"
+                  autocomplete="off"
+                />
+                <label
+                  class="btn btn-primary btn-lg btn_263_63 mb-3 mb-md-0"
+                  for="btnradio2"
+                  >Business Website <img src="images/icon-tick.svg" />
+                </label> -->
+                  </div>
+                </div>
+                <div class="col-12 mt-4">
+                  <button
+                    id="submit"
+                    type="submit"
+                    class="btn btn-gradiant w-100"
+                  >
+                    PROCEED
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </ng-template>
+</ng-template>

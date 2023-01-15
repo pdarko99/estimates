@@ -25,3 +25,27 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Changes
+
+App.component.ts
+
+home.component.scss file
+
+I added margin-bottom:1em !important; to the btn_263_63 class
+
+also I made many changes in below files so it would we better you copy and replace all
+
+getqtn.component.ts
+gqtqtn.component.html
+getqtn.component.css
+
+hello infact all the files have been updated
+
+-- app-header
+
+-- home
+
+-- questions
+
+-- app.module.ts

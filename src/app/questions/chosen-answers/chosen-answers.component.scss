@@ -1,0 +1,179 @@
+
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+.page_main {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  min-height: 100vh;
+}
+.left_shape {
+  z-index: 8;
+  background: linear-gradient(
+    163deg,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 19%,
+    rgb(176, 220, 115) 50%,
+    rgb(103, 103, 103) 92%,
+    rgb(103, 103, 103) 100%
+  );
+  color: rgb(255, 255, 255);
+  width: 335px;
+  height: 335px;
+  border-radius: 200px;
+  transform-origin: 50% 50%;
+  transform: translate(0px, 0px);
+  position: absolute;
+  left: -265px;
+  top: 50%;
+  margin-top: -170px;
+}
+.bottom_shape {
+  z-index: 8;
+  background: linear-gradient(
+    163deg,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 19%,
+    rgb(176, 220, 115) 50%,
+    rgb(103, 103, 103) 92%,
+    rgb(103, 103, 103) 100%
+  );
+  color: rgb(255, 255, 255);
+  width: 335px;
+  height: 335px;
+  border-radius: 200px;
+  transform-origin: 50% 50%;
+  transform: translate(0px, 0px);
+  position: absolute;
+  left: -16px;
+  bottom: -238px;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  min-height: 60vh;
+  align-items: center;
+  justify-items: center;
+}
+.md_1 {
+  font-family: "Fjalla One", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 80px;
+  text-transform: uppercase;
+}
+
+.md_2 {
+  font-family: "Fjalla One", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 80px;
+  text-transform: uppercase;
+   background: linear-gradient(283.58deg, #9dc039 47.92%, #545944 109.42%),
+    #000000;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.me_2 {
+  font-style: normal;
+  font-weight: 650;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+.p_1 {
+  width: 80%;
+  margin-top: 1em;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.p_2 {
+  font-size: 25px;
+}
+
+span {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.confirm {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.second p {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
+
+
+
+.discount{
+  width: 100%;
+  margin:auto;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(283.58deg, #9dc039 47.92%, #545944 109.42%),
+    #000000;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.twenty{
+  font-size: 7em;
+  font-weight: 500;
+  margin-right: -25px;
+  font-family: "Fjalla One", sans-serif;
+
+}
+
+.divider{
+  width: 2px;
+  height: 10em;
+  background-color: #000;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/**************/
+@media only screen and (max-width: 820px) {
+  .left_shape {
+    display: none;
+  }
+
+
+  .page_main{
+    width: 95%!important;
+    margin:auto
+  }
+
+  svg{
+    width: 118px;
+  }
+
+
+
+  .divider {
+    width: 2px;
+    height: 10em;
+    background-color: #000;
+    margin-right: 0 !important; 
+    margin-left: 3px;
+}
+}

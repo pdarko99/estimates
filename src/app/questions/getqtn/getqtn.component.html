@@ -1,0 +1,125 @@
+
+
+
+<ng-container *ngIf="isLoading; else errorOrLoaded" >
+  <p class="loading" >Loading data ...</p>
+</ng-container>
+
+<ng-template #errorOrLoaded>
+  <ng-container *ngIf="errorMessage; else loaded" >
+    <p class="loading">{{ errorMessage }}</p>
+  </ng-container>
+  <ng-template #loaded>
+    
+    <section class="top-section">
+     <app-app-header></app-app-header>
+  <div class="progress">
+    <div
+      class="progress-bar custom bg-success progress-bar-striped progress-bar-animated"
+      role="progressbar"
+      [style.width]="progressvalue + '%'"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+  </div>
+</section>
+
+<main class="page_main">
+  <span class="left_shape"></span>
+  <span class="bottom_shape"></span>
+
+  <div class="container scrollable">
+    <div class="row g-5 justify-content-between">
+      <div class="col-md-8">
+        <form class="needs-validation" #form>
+          <div class="row g-3">
+            <div class="col-12" *ngFor="let qtn of qtns; let i = index">
+              <label
+                [@enterAnimation]
+                *ngIf="!qtn.sub"
+                class="form-check-label d-block mb-3"
+                >{{ qtn.question }}</label
+              >
+              <div
+                [@enterAnimation]
+                *ngIf="!qtn.sub"
+                class="btn_group2"
+                role="group"
+              >
+                <span *ngFor="let opt of qtn.options">
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    [attr.data-price]="opt.price"
+                    [name]="qtn.id"
+                    [id]="opt.id"
+                    autocomplete="off"
+                    (click)="calcPrice()"
+                  />
+                  <label
+                    (click)="forSub(opt.next_qtn, opt.question, i)"
+                    class="btn btn-primary btn-lg btn_auto_54 mb-3 mb-md-0"
+                    [for]="opt.id"
+                    >{{ opt.option }} <img src="assets/images/icon-tick.svg" />
+                  </label>
+                </span>
+              </div>
+            </div>
+
+            <button
+              id="submit"
+              (click)="submitForm()"
+              type="submit"
+              class="submitBtn"
+              #submitButton
+            >
+              submit
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4 fixed">
+        <div class="order_card mb-3">
+          <div class="order_content">
+            <h3 class="hd_3 mb-2 desktop">based on your selection</h3>
+            <h3 class="hd_3 mb-2 mobile">your service will cost around</h3>
+            <div class="cost_label mb-3">
+              Your brand new website will cost approximately
+            </div>
+
+            <div class="mb-4 order_cost">
+              {{ currency.symbol }}{{ currency.price }}<span class="to">to</span>
+              {{ currency.symbol
+              }}{{ currency.price ? currency.price + 0.2*currency.price : 0 }}
+            </div>
+          </div>
+          
+          <div class="abdeal">
+
+          <button *ngIf="showSubmitbtn" 
+          (click)="proceed()" id="submit"
+           type="submit"  
+           class="btn btn-gradiant w-100 desktopbtn">
+            Proceed
+          </button>
+
+          <button *ngIf="showSubmitbtn" 
+          (click)="proceed()" id="submit" 
+          type="submit" class="btn btn-gradiant
+           mobilebtn">
+            Proceed
+          </button>
+          </div>
+
+        </div>
+        <div class="order_note">
+          <strong>Note:</strong> Because of high order volumes, we will be
+          sending estimate delivery dates within few days of your booking. The
+          order will be served on “first come first served basis”.
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+  </ng-template>
+</ng-template>
