@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Poppins:wght@300;400;500;700&display=swap');
+
+
+:root {
+    --color-1: #000000;
+    --color-2: #333333;
+    --color-3: #eaeaea;
+    --color-text: #000000;
+    --color-background: #f6f6f6;
+    
+    --font-1: 'poppins', sans-serif;
+    --font-2: 'Fjalla One', sans-serif;
+}
+
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: var(--font-1);
+    font-size: 16px;
+}
+
+h1, h2 {
+    font-family: var(--font-2);
+}
+
+.main-content {
+    max-width: 1128px;
+    margin: auto;
+    padding: 100px 20px;
+}
+
+.page-header {
+    margin-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    text-transform: uppercase;
+}
+.flex-col-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-container {
+    position: relative;
+    border: 1px solid var(--color-1);
+    padding: 20px;
+}
+
+.simple-seperator {
+    margin-bottom: 20px;
+}
+
+/*
+Shared Elements
+*/
+.edit-btn {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    bottom: 10px;
+    font-size: 14px;
+    right: 15px;
+    border: 1px solid;
+    padding: 2px 10px;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: 0.1s ease-in;
+
+}
+
+.edit-btn::before {
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: url(/assets/edit-icon.png);
+    background-size: cover;
+    transition: 0.1s ease-in;
+}
+
+// .edit-btn:hover {
+//     background-color: var(--color-1);
+//     color: #ffffff;
+// }
+
+// .edit-btn:hover::before {
+//     filter: invert(1);
+// }
+
+
+.add-new-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+}
+.btn-1, .btn-2 {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px 35px;
+    border-radius: 5px;
+    border: 1px solid var(--color-1);
+    background-color: transparent;
+    color: var(--color-1);
+}
+.btn-1 {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px 35px;
+    border-radius: 5px;
+    border: 1px solid var(--color-1);
+    background-color: var(--color-1);
+    color: var(--color-3);
+}
+.btn-2:hover {
+    background-color: var(--color-3);
+}
+.btn-1:hover {
+    background-color: var(--color-2);
+    border-color: var(--color-2);
+}
+.button-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.button-wrapper a {
+    flex: 1 0 fit-content;
+}
+/*
+Styles for the all service page
+*/
+
+.service-name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.service-questions {
+    font-size: 14px;
+}
+
+/*
+Styles for the view service page
+*/
+
+.inner-items {
+    margin-bottom: 10px;
+}
+
+.inner-items .label {
+    font-size: 14px;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+.inner-items .inner-content {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.inner-items ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+/*
+Styles for add-edit
+*/
+
+.edit-item {
+    gap: 5px;
+    margin-bottom: 15px;
+}
+.edit-item .label {
+    font-size: 14px;
+}
+
+.input-style {
+    border: 1px solid var(--color-1);
+    background-color: transparent;
+}
+
+.option-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+
+.option-wrapper .input-style {
+    flex: 1 0 fit-content;
+
+}

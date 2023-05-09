@@ -20,10 +20,10 @@
   right: 0;
 }
 
-.to{
-    padding-left: 10px;
-    font-size: 18px;
-    text-transform: lowercase;
+.to {
+  padding-left: 10px;
+  font-size: 18px;
+  text-transform: lowercase;
 }
 
 .custom {
@@ -36,7 +36,6 @@
   padding-left: 10px;
   background-color: #87bb3f !important;
 }
-
 
 // btn btn-primary btn-lg btn_auto_54 mb-3 mb-md-0
 
@@ -94,6 +93,17 @@
   left: -16px;
   bottom: -238px;
 }
+.order_note > img {
+  width: 300px !important;
+}
+
+.dynamicLogo {
+  width: 300px;
+}
+
+::ng-deep .dynamicLogo {
+  width: 300px;
+}
 .btn-check:focus + .btn,
 .btn:focus {
   outline: 0;
@@ -121,8 +131,6 @@
   text-fill-color: transparent;
   border: none;
 }
-
-
 
 .btn_263_63 {
   min-width: 263px;
@@ -182,10 +190,86 @@
   min-height: 54px;
   min-width: 140px;
   justify-content: left;
+  text-align: left;
+  font-size: 16px !important;
+  margin-bottom: 1em !important;
 }
 .btn_group2 .btn {
   margin: 0 8px;
 }
+
+.btn_group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.common-options-style {
+  text-align: left;
+  flex: 1 0 fit-content;
+  padding: 10px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  font-size: 18px;
+  line-height: 1.25;
+  color: rgb(99, 99, 99);
+  min-height: 4em;
+  transition: all 0.25s ease-in;
+}
+
+.common-options-style:hover {
+  color: #ffffff;
+}
+
+.checkbox-style {
+  border-radius: 8px;
+}
+
+.radio-style {
+  border-radius: 100px;
+}
+
+	.checkbox-style {
+		border-radius: 8px;
+	}
+
+	.btn-check:checked + .common-options-style {
+		color: #ffffff;
+		background-color: #9DC039;
+		border-color: #9DC039;
+
+	}
+	.common-options-style:hover {
+		background-color: #9DC039;
+		border-color: #9DC039;
+	}
+
+	.radio-style::before, .checkbox-style::before {
+		content: "";
+		height: 24px !important;
+		width: 24px !important;
+		flex: 0 0 24px;
+		border: 2px solid #b6b6b6;
+	}
+	.radio-style::before {
+		border-radius: 50%;	
+	}
+	.checkbox-style::before {
+		border-radius: 5px;
+	}
+	.radio-style:hover::before, .checkbox-style:hover::before {
+		border-color: currentColor;
+	}
+	.btn-check:checked + .common-options-style::before {
+		background-image: url('../../../assets/images/square-tick.png');
+		background-position: center;
+		background-size: contain;
+		border-color: currentColor;
+	}
 
 .order_card {
   background: #ffffff;
@@ -268,8 +352,8 @@
   }
 
   .btn_auto_54 {
-margin-right: 1em !important;
-}
+    margin-right: 1em !important;
+  }
 
   // .order_card {
   //   position: fixed;
@@ -294,7 +378,7 @@ margin-right: 1em !important;
     gap: 10px;
   }
 
-   .hd_3 {
+  .hd_3 {
     font-family: Inter;
     font-weight: 400;
     font-size: 16px;
@@ -357,7 +441,7 @@ margin-right: 1em !important;
     display: none;
   }
 
-   .abdeal {
+  .abdeal {
     display: flex;
     flex: 1;
     justify-content: center;

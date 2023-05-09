@@ -17,6 +17,9 @@ import { AppService } from "src/app/app-service/app.service";
   ],
 })
 export class GetqtnComponent implements OnInit {
+  inputChangeValue = 0;
+  dynamich2 = "We are dynamic";
+  dynamicImg = "assets/images/azLogo.png";
   @ViewChild("form") form!: ElementRef;
   @ViewChild("submitButton") submitButton!: ElementRef;
   showSubmitbtn = false;
@@ -31,11 +34,15 @@ export class GetqtnComponent implements OnInit {
   };
 
   qtns: any = [];
+  dynamicInfo = "";
   constructor(private _as: AppService, private _router: Router) {}
 
   ngOnInit(): void {
+    this.dynamicInfo = this._as.dynamicInfo;
+    console.log(this.dynamicInfo, "from info");
     this._as.getQtns().subscribe(
       (res) => {
+        console.log(res, "from res");
         res.response[0].sub = false;
         this.qtns = res.response;
         this.arrayLength = this.qtns.length;
@@ -51,9 +58,65 @@ export class GetqtnComponent implements OnInit {
     );
   }
 
-  submitForm() {
+  inputChange(
+    event: any,
+    next_qtn: string | undefined,
+    mainqtn: string,
+    i: number
+  ) {
+    // console.log("changed")
     const checkboxes =
       this.form.nativeElement.querySelectorAll("input[type=radio]");
+    this.currency.price = 0;
+
+    for (const checkbox of checkboxes) {
+      const price = checkbox.dataset.price;
+
+      if (checkbox.checked) {
+        this.currency.price += +price;
+      }
+    }
+
+    const inputfield =
+      this.form.nativeElement.querySelectorAll("input[type=number]");
+
+    for (const inputs of inputfield) {
+      const minimum_value = inputs.dataset.price;
+      const percentage = inputs.name;
+
+      if (inputs.value) {
+        if ((percentage / 100) * inputs.value > minimum_value) {
+          this.currency.price += (percentage / 100) * inputs.value;
+        } else {
+          this.currency.price += +minimum_value;
+        }
+      }
+    }
+
+    const radioboxes = this.form.nativeElement.querySelectorAll(
+      "input[type=checkbox]"
+    );
+    for (const checkbox of radioboxes) {
+      const price = checkbox.dataset.price;
+
+      if (checkbox.checked) {
+        this.currency.price += +price;
+      }
+    }
+
+    this.forSub(next_qtn, mainqtn, i);
+  }
+
+  submitForm() {
+    console.log( "from data afdfdadsf again oo");
+
+    const checkboxes =
+      this.form.nativeElement.querySelectorAll("input[type=radio]");
+    const checks = this.form.nativeElement.querySelectorAll(
+      "input[type=checkbox]"
+    );
+     const inputfield =
+      this.form.nativeElement.querySelectorAll("input[type=number]");
     const data: any = {};
 
     for (const checkbox of checkboxes) {
@@ -67,6 +130,32 @@ export class GetqtnComponent implements OnInit {
         data[name] = id;
       }
     }
+
+    for (const checkbox of checks) {
+       const name = checkbox.name;
+       const id = checkbox.id;
+
+       if (checkbox.checked) {
+         if (!data[name]) {
+           data[name] = null;
+         }
+         if (data[name]) {
+           data[name] = data[name] + "," + id;
+           
+         } else {
+           
+           data[name] = id;
+         }
+       }
+    }
+
+    for (const inputs of inputfield) { 
+      const qtn = inputs.id;
+      if (inputs.value) {
+        data[qtn] = inputs.value
+      }
+    }
+    console.log(data, 'from data afdfdadsf again oo')
     let userInput = {
       userId: localStorage.getItem("userId"),
       inputs: data,
@@ -85,7 +174,7 @@ export class GetqtnComponent implements OnInit {
     );
   }
 
-  forSub(next_qtn: string, mainqtn: string, i: number) {
+  forSub(next_qtn: string | undefined, mainqtn: string, i: number) {
     if (next_qtn) {
       let index = this.qtns.findIndex((i: any) => i.id === next_qtn);
       if (index !== -1) {
@@ -151,6 +240,18 @@ export class GetqtnComponent implements OnInit {
         this.currency.price += +price;
       }
     }
+
+    const radioboxes = this.form.nativeElement.querySelectorAll(
+      "input[type=checkbox]"
+    );
+    for (const checkbox of radioboxes) {
+      const price = checkbox.dataset.price;
+
+      if (checkbox.checked) {
+        this.currency.price += +price;
+      }
+    }
+    // this.inputChange(undefined)
   }
 
   checkmain(i: number) {

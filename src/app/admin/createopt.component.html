@@ -1,0 +1,53 @@
+<main>
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">ADD OPTION</h5>
+          <form action="" #form="ngForm" (ngSubmit)="createoptn()">
+            <!-- <small *ngIf="errormsg">{{errormsg}}</small> -->
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Option</label>
+              <input type="text" #titleField = 'ngModel' class="form-control"  [(ngModel)]="selectedOptn.option" required name="question"  placeholder="option">
+              <!-- <small [hidden] = "titleField.valid || titleField.untouched">service name is required</small> -->
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Price</label>
+              <input type="text" #authorField = 'ngModel' class="form-control" [(ngModel)]="selectedOptn.price" required name="percenteage" placeholder="price">
+              <!-- <small [hidden] = "authorField.valid || authorField.untouched">description is required</small> -->
+            </div>
+            
+              <div class="mb-3">
+          <select
+            class="form-select"
+            id="inputGroupSelect04 teamInput"
+            aria-label="Example select with button addon"
+            name="team"
+            [(ngModel)]="selectedOptn.next_qtn"
+          
+          >
+            <option value="" disabled selected>Please select next qtn</option>
+            <option *ngFor="let qtn of qtns; let i = index" [value]="qtn.id">{{ qtn.question }}</option>
+       
+          </select>
+        </div>
+
+           
+            <div class="btn-container">
+
+              <button type="submit" [disabled] = "form.invalid" class="btn btn-primary mb-3">
+                <!-- <span *ngIf ="show" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+                Submit
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      
+      <section class="qtnsContainer">
+         <button (click)="goToqnts()" type="button" class="btn btn-primary mb-3">
+          go to qtns
+              </button>
+      </section>
+</main>

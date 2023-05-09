@@ -1,0 +1,79 @@
+.section1 {
+  header {
+    margin-bottom: 2em;
+  }
+}
+
+
+
+
+h2 {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+td > img {
+  width: 20px;
+  height: 20px;
+}
+
+main {
+  width: 80%;
+  margin: auto;
+  padding-top: 2em;
+
+}
+
+.main {
+  width: 100%;
+ 
+}
+
+
+
+
+.team_name{
+  cursor:pointer;
+}
+
+
+
+
+.example-container{
+  padding-bottom:1em;
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    width: 100%;
+    overflow-x: hidden;
+    // padding:10px
+  }
+  ul {
+    width: 100%;
+    padding-left: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+  nav {
+    width: 90%;
+    margin: auto;
+  }
+
+  .example-container {
+    /* height: 600px; */
+    width: 350px;
+    max-width: 100%;
+    overflow: auto;
+  }
+}

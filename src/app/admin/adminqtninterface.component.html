@@ -1,0 +1,40 @@
+
+ <main class="main-content view-service">
+        <div class="page-header">
+            <h1>{{servicename}}</h1>
+        </div>
+        <div class="rightbtn">
+            <button class="btn btn-primary" (click)="routeToqtn()">add Qtn</button>
+
+        </div>
+
+        <div class="flex-col-wrapper">
+            <div class="card-container" *ngFor="let qtn of qtns; let i = index">
+                <div class="inner-items">
+                    <label for="" class="label label--question">Question</label>
+                    <div class="inner">
+                        <h3 class="inner-content content--question">{{ qtn.question }}</h3>
+                        <div  (click)="routeToQtns(qtn)" class="edit-btn">Edit</div>
+                    </div>
+                </div>
+                <div class="inner-items">
+                    <label for="" class="label label--type">Type</label>
+                    <p *ngIf="!qtn.percentage" class="inner-content content--type">{{ qtn.multiple ? 'multiple' : 'radio' }}</p>
+                    <p *ngIf="qtn.percentage" class="inner-content content--type">text</p>
+                </div>
+                <div class="inner-items">
+                    <label for="" class="label label--options">Options</label>
+                    <ul class="inner-content content--options">
+                        <div class="opts" *ngFor="let opt of qtn.options"  >
+                            <li><span class="option-label"> {{ opt.option }}</span> | <span class="option-value">₹ {{ opt.price }}</span></li>
+                            <li (click)="routeToOptns(opt)"><span class="edit-btn">Edit</span></li>
+                        </div>
+                    </ul>
+                </div>
+                
+            </div>
+           
+           
+            </div>
+     
+    </main>

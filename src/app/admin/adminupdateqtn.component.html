@@ -1,0 +1,58 @@
+<main>
+    <section>
+        <div class="new">
+            <button class="btn btn-primary" (click)="routeToqtn()">add Qtn</button>
+            <button *ngIf="!selectedQtn.percentage" class="btn btn-primary" (click)="routeToOptn()">add Option</button>
+        </div>
+    </section>
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">UPDATE QUESTION</h5>
+          <form action="" #form="ngForm" (ngSubmit)="updateqtn()">
+            <!-- <small *ngIf="errormsg">{{errormsg}}</small> -->
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">question</label>
+              <input type="text" #titleField = 'ngModel' class="form-control"  [(ngModel)]="selectedQtn.question" required name="question"  placeholder="question">
+              <!-- <small [hidden] = "titleField.valid || titleField.untouched">service name is required</small> -->
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">percentage</label>
+              <input type="text" #authorField = 'ngModel' class="form-control" [(ngModel)]="selectedQtn.percentage" required name="percenteage" placeholder="percentage">
+              <!-- <small [hidden] = "authorField.valid || authorField.untouched">description is required</small> -->
+            </div>
+
+            
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">multiple</label>
+              <input type="text" #multiple = 'ngModel' class="form-control" [(ngModel)]="selectedQtn.multiple"  name="multiple" placeholder="multiple">
+              <!-- <small [hidden] = "authorField.valid || authorField.untouched">dynamicinfo is required</small> -->
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">minimum_value</label>
+              <input type="text" #minimum_value = 'ngModel' class="form-control" [(ngModel)]="selectedQtn.minimum_value"  name="minimum_value" placeholder="minimum_value">
+              <!-- <small [hidden] = "authorField.valid || authorField.untouched">dynamicinfo is required</small> -->
+            </div>
+
+            
+
+           
+            <div class="btn-container">
+
+                    <button type="submit"  class="btn btn-primary mb-3">
+                <!-- <span *ngIf ="show" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+                Submit
+              </button>
+
+              <button type="button" (click)="deleteqtn()"  class="btn btn-danger mb-3">
+                <!-- <span *ngIf ="show" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+                Delete question
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+</main>

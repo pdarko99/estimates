@@ -1,0 +1,19 @@
+    <main class="main-content main__service-list">
+
+    <div class="page-header">
+        <h1>All Services</h1>
+    </div>
+
+    <div class="flex-col-wrapper">
+        <div class="card-container" *ngFor="let s of serviceList">
+            <div class="service-name" (click)="routeToqtns(s.id, s.service)">{{ s.service }}</div>
+            <!-- <div class="service-questions">Number of Questions: 15</div> -->
+            <div class="edit-btn" (click)="routeToEdit(s)">Edit</div>
+        </div>
+     
+    </div>
+
+    <div class="button-wrapper add-new-wrapper">
+        <a href="#" class="btn-1 add-new-service-btn">Add New Service</a>
+    </div>
+</main>

@@ -1,0 +1,42 @@
+ <div class="main">
+  <main>
+
+    <section>
+        <div class="example-container">
+             <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">question</th>
+              <th scope="col">Option</th>
+              <th scope="col">Price</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let i of userInput" 
+            >
+              
+              <td>{{i.question}}</td>
+              <td>{{i.option}}</td>
+              <td>{{i.price}}</td>
+        
+
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div>
+          the total price is: {{ttprice}}
+        </div>
+    
+
+     
+    </section>
+  </main>
+</div>
+ 
+
+
+

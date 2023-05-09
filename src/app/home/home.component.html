@@ -17,9 +17,9 @@
       <div class="container">
         <div class="row g-5 justify-content-between">
           <div class="col-md-4 col-lg-3">
-            <div class="sub_heading">Let’s Take your</div>
-            <h1 class="hd_1">business Online</h1>
-            <p class="info_2">Don’t need to wait for quotation</p>
+            <div class="sub_heading">{{sub_heading}}</div>
+            <h1 class="hd_1">{{main_heading}}</h1>
+            <p class="info_2">{{description}}</p>
             <div class="info_1">
               use this tool to get <span>instant cost estimates for free</span>
             </div>
@@ -111,7 +111,6 @@
 
                   <ng-select
                     (change)="setIndustry()"
-
                     name="industry"
                     required
                     #indus="ngModel"
@@ -119,12 +118,8 @@
                     [items]="industry"
                     bindLabel="name"
                     bindValue="name"
-                   
                   ></ng-select>
-                  <small
-                    class="error"
-                    *ngIf="showIndustryError"
-                  >
+                  <small class="error" *ngIf="showIndustryError">
                     Industry name is required..
                   </small>
                   <!-- <select class="form-select" required="">
@@ -215,7 +210,7 @@
                   </small>
                 </div>
 
-                <div class="col-12">
+                <div class="col-12" *ngIf="showServices">
                   <label class="form-check-label d-block mb-2"
                     >select your service<span class="asterisk">*</span></label
                   >
@@ -254,6 +249,29 @@
                   >Business Website <img src="images/icon-tick.svg" />
                 </label> -->
                   </div>
+                </div>
+                <div class="col-12">
+                  <ngx-recaptcha2
+                    required
+                    name="captcha"
+                    [(ngModel)]="info.captcha"
+                    #captcha="ngModel"
+                    [siteKey]="sitekey"
+                  >
+                  </ngx-recaptcha2>
+                  <small
+                    class="error"
+                    *ngIf="showErrors && captcha.errors?.['required']"
+                  >
+                    please verify you are human
+                  </small>
+
+                  <small
+                    class="error"
+                    *ngIf="showErrors && form.controls['captcha'].invalid"
+                  >
+                    invalid 
+                  </small>
                 </div>
                 <div class="col-12 mt-4">
                   <button
