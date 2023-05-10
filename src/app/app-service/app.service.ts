@@ -7,8 +7,8 @@ import { Iinquiry, Iservice } from "./interface";
   providedIn: "root",
 })
 export class AppService {
-  // url = "https://estimatesback.azguards.com";
-  url = "http://localhost:3000";
+  url = "https://estimatesback.azguards.com";
+  // url = "http://localhost:3000";
   serviceId = "bc022627-5133-4834-942e-8496cd614ddf";
   // serviceId = "bc022627-5133-4834-942e-8496cd614ddf";
   dynamicInfo = "";
