@@ -32,4 +32,9 @@ export class ServiceListComponent implements OnInit {
     this._as.selectedService = i;
     this._router.navigate(["admin/serviceList/update"]);
   }
+
+  addnewService(){
+    this._router.navigate(["admin/serviceList/add"]);
+    
+  }
 }

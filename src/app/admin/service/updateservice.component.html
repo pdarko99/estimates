@@ -20,7 +20,7 @@
             
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">dynamicinfo</label>
-              <input type="text" #dynamicinfo = 'ngModel' class="form-control" [(ngModel)]="selectedservice.dynamicinfo"  name="dynamicinfo" placeholder="dynamicinfo">
+              <input type="text" #dynamicinfo = 'ngModel' class="form-control" [(ngModel)]="selectedservice.dynamicinfo.data"  name="dynamicinfo" placeholder="dynamicinfo">
               <!-- <small [hidden] = "authorField.valid || authorField.untouched">dynamicinfo is required</small> -->
             </div>
 
